@@ -9,7 +9,7 @@ A comprehensive Python implementation of Density-based Adaptive Mode Decompositi
 
 - **Multiple Decomposition Methods**:
   - **DME (Direct Mode Extraction)**: Fast frequency-domain decomposition using clustering
-  - **IMR (Interaction Mode Resolution)**: Variational decomposition for overlapping modes  
+  - **IMR (Interaction Mode Refinement)**: Variational decomposition for overlapping modes  
   - **HVR (Hybrid Variational Refinement)**: Combines DME initialization with selective VMD refinement
   - **VMD (Traditional)**: Classic Variational Mode Decomposition
 
