@@ -1,4 +1,4 @@
-# tfvmd/core/transforms.py
+# damd/core/transforms.py
 
 from typing import Tuple, Optional
 import numpy as np

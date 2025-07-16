@@ -1,4 +1,4 @@
-# tfvmd/utils/bandwidth.py
+# damd/utils/bandwidth.py
 
 import numpy as np
 from numba import jit, float64

@@ -1,4 +1,4 @@
-# tfvmd/visualization/plotter.py
+# damd/visualization/plotter.py
 
 from ..core.config import ProcessingResult
 from .config import VisualizationConfig, SaveConfig

@@ -1,4 +1,4 @@
-# tfvmd/visualization/config.py
+# damd/visualization/config.py
 
 from dataclasses import dataclass, field
 from typing import Tuple, Dict, Union, Optional

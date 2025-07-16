@@ -1,4 +1,4 @@
-# tfvmd/core/config.py
+# damd/core/config.py
 
 from dataclasses import dataclass
 from typing import Optional, Literal, Union, List

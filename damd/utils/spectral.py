@@ -1,4 +1,4 @@
-# tfvmd/utils/spectral.py
+# damd/utils/spectral.py
 
 import numpy as np
 from scipy import signal

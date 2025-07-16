@@ -1,4 +1,4 @@
-# tfvmd/core/decomposition.py
+# damd/core/decomposition.py
 
 from typing import Tuple, Optional, Union, List, Dict
 import numpy as np
@@ -11,7 +11,7 @@ from ..core.clustering import MeanshiftClustering
 from ..core.transforms import SignalTransformer
 from ..utils.bandwidth import estimate_bandwidth
 
-class TimeFrequencyVMD:
+class DAMD:
     """Implements Time-Frequency VMD with adaptive bandwidth and method selection."""
     
     def __init__(self, config: VMDConfig, bandwidth_config: BandwidthConfig):

@@ -1,4 +1,4 @@
-# tfvmd/core/clustering.py
+# damd/core/clustering.py
 
 import numpy as np
 from numba import jit, float64

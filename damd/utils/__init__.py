@@ -1,4 +1,4 @@
-# tfvmd/utils/__init__.py
+# damd/utils/__init__.py
 from .bandwidth import estimate_bandwidth, compute_spectral_curvature
 from .spectral import (
     compute_spectrogram,
