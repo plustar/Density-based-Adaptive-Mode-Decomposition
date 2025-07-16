@@ -73,9 +73,9 @@ cd Density-based-Adaptive-Mode-Decomposition
 
 ```python
 import numpy as np
-from tfvmd.core.decomposition import TimeFrequencyVMD
-from tfvmd.core.config import VMDConfig, BandwidthConfig
-from tfvmd.visualization.plotter import VMDVisualizer
+from damd.core.decomposition import DAMD
+from damd.core.config import VMDConfig, BandwidthConfig
+from damd.visualization.plotter import VMDVisualizer
 
 # Generate a test signal
 fs = 512
@@ -99,7 +99,7 @@ vmd_config = VMDConfig(
 )
 
 # Initialize and run decomposition
-vmd = TimeFrequencyVMD(vmd_config, bandwidth_config)
+vmd = DAMD(vmd_config, bandwidth_config)
 signal_expanded = signal.reshape(1, -1)
 tf_map, _ = vmd.transformer.transform(signal_expanded, transform_type='stft')
 result = vmd.decompose(tf_map)
@@ -116,7 +116,7 @@ plt.show()
 ### Advanced Configuration
 
 ```python
-from tfvmd.visualization.config import VisualizationConfig, FontConfig, SaveConfig
+from damd.visualization.config import VisualizationConfig, FontConfig, SaveConfig
 
 # Custom visualization settings
 viz_config = VisualizationConfig(
