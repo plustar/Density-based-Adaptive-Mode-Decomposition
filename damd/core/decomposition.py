@@ -6,7 +6,7 @@ from tqdm import tqdm
 import copy
 import scipy
 from scipy.interpolate import interp1d
-from ..core.config import VMDConfig, ProcessingResult, BandwidthConfig
+from ..core.config import DAMDConfig, ProcessingResult, BandwidthConfig
 from ..core.clustering import MeanshiftClustering
 from ..core.transforms import SignalTransformer
 from ..utils.bandwidth import estimate_bandwidth
@@ -14,7 +14,7 @@ from ..utils.bandwidth import estimate_bandwidth
 class DAMD:
     """Implements Time-Frequency VMD with adaptive bandwidth and method selection."""
     
-    def __init__(self, config: VMDConfig, bandwidth_config: BandwidthConfig):
+    def __init__(self, config: DAMDConfig, bandwidth_config: BandwidthConfig):
         self.config = config
         self.bandwidth_config = bandwidth_config
         self.transformer = SignalTransformer(
@@ -182,9 +182,9 @@ class DAMD:
             self.config.keep_residual = False
             
         modes_data = self._extract_dme_modes(
-            tf_map, 
-            clustering, 
-            bandwidths, 
+            tf_map,
+            clustering,
+            bandwidths,
             freqs,
             keep_residual=self.config.keep_residual
         )
@@ -1162,7 +1162,7 @@ class DAMD:
                     pbar.write(f"VMD terminated at max iterations ({self.config.max_iterations})")
                     pbar.write(f"  Final - Mode diff: {max_mode_diff:.2e}, Freq diff: {freq_diff:.2e}")
                     break
-                    
+
         except Exception as e:
             pbar.write(f"Error in VMD iteration: {str(e)}")
             import traceback

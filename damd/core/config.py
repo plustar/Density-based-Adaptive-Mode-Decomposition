@@ -6,7 +6,7 @@ import numpy as np
 import scipy.signal
 
 @dataclass
-class VMDConfig:
+class DAMDConfig:
     """Configuration parameters for VMD algorithm."""
     num_channels: int
     n_fft: int = 128
@@ -27,7 +27,7 @@ class VMDConfig:
         """Setup derived parameters after initialization."""
         self.padwidth = ((self.n_fft-1)//2, (self.n_fft-1)//2) \
             if (self.n_fft-1)%2==0 else ((self.n_fft-1)//2+1, (self.n_fft-1)//2)
-        
+
         if self.window_func is None:
             self.window = scipy.signal.windows.hann(self.n_fft, sym=True)
         else:
@@ -58,7 +58,7 @@ class ProcessingResult:
         """Initialize additional attributes."""
         self.n_modes = len(self.mode_functions)
         self.time_range = len(np.unique(self.time_indices))
-        
+
     def compute_tf_energy(self, freq_bins: int = None) -> np.ndarray:
         """Compute time-frequency energy distribution."""
         if freq_bins is None:

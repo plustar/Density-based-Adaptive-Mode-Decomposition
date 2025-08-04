@@ -74,7 +74,7 @@ cd Density-based-Adaptive-Mode-Decomposition
 ```python
 import numpy as np
 from damd.core.decomposition import DAMD
-from damd.core.config import VMDConfig, BandwidthConfig
+from damd.core.config import DAMDConfig, BandwidthConfig
 from damd.visualization.plotter import VMDVisualizer
 
 # Generate a test signal
@@ -90,7 +90,7 @@ bandwidth_config = BandwidthConfig(
 )
 
 # Configure DAMD
-vmd_config = VMDConfig(
+vmd_config = DAMDConfig(
     num_channels=1,
     n_fft=fs//2,
     alpha=50,
@@ -149,7 +149,7 @@ fig = visualizer.plot_and_save(
 ### VMD Configuration
 
 ```python
-VMDConfig(
+DAMDConfig(
     num_channels=1,          # Number of signal channels
     n_fft=128,              # FFT size for transforms
     alpha=10,               # Balancing parameter for VMD
