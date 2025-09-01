@@ -56,7 +56,7 @@ cd Density-based-Adaptive-Mode-Decomposition
 
 # Create conda environment from provided file
 conda env create -f environment.yml
-conda activate acvmd
+conda activate damd
 ```
 
 ### Using pip
