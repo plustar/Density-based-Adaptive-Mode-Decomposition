@@ -40,6 +40,7 @@ class BandwidthConfig:
     scale_factor: float = 1.0
     base_method: Literal['silverman', 'scott'] = 'silverman'
     min_bandwidth: float = 1e-6
+    seed_spacing: int = 5
 
 @dataclass
 class ProcessingResult:
