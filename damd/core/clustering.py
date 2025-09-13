@@ -49,7 +49,7 @@ class MeanshiftClustering:
                 tf_map: Optional[np.ndarray] = None,
                 max_iterations: int = 300,
                 convergence_thresh: float = 1e-4,
-                seed_spacing: int = 5) -> np.ndarray:
+                seed_spacing: Optional[int] = None) -> np.ndarray:
         """
         Perform meanshift clustering with adaptive or fixed bandwidth.
         
@@ -60,15 +60,18 @@ class MeanshiftClustering:
             tf_map: Time-frequency representation (for adaptive bandwidth)
             max_iterations: Maximum number of iterations
             convergence_thresh: Convergence threshold
-            seed_spacing: Spacing between seed points for uniform sampling (default: 3)
+            seed_spacing: Spacing between seed points for uniform sampling (default: from config)
             
         Returns:
             Array of cluster centers
         """
-        seed_spacing = self.bandwidth_config.seed_spacing
         freqs = np.ascontiguousarray(freqs, dtype=np.float64)
         powers = np.ascontiguousarray(powers / np.max(powers), dtype=np.float64)
         n_points = len(freqs)
+        
+        # Initialize seed_spacing from config if not provided
+        if seed_spacing is None:
+            seed_spacing = self.bandwidth_config.seed_spacing
         
         bandwidth = estimate_bandwidth(
             freqs, powers,
@@ -81,26 +84,26 @@ class MeanshiftClustering:
         else:
             bandwidth = np.ascontiguousarray(bandwidth, dtype=np.float64)
             
-        # 使用均匀采样选择种子点
+        # Use uniform sampling to select seed points
         seed_indices = np.arange(0, n_points, seed_spacing)
         positions = freqs[seed_indices].copy()
         
-        # 为种子点准备对应的带宽
+        # Prepare corresponding bandwidth for seed points
         seed_bandwidth = bandwidth[seed_indices].copy()
         
-        # Meanshift迭代
+        # Meanshift iterations
         for _ in range(max_iterations):
             new_positions = shift_points(
                 positions, freqs, powers, seed_bandwidth
             )
             
-            # 检查收敛性
+            # Check convergence
             if np.max(np.abs(new_positions - positions)) < convergence_thresh:
                 break
                 
             positions = new_positions
         
-        # 提取聚类中心
+        # Extract cluster centers
         mean_bandwidth = np.mean(bandwidth)
         sorted_positions = np.sort(positions)
         position_diff = np.diff(sorted_positions)
@@ -112,7 +115,7 @@ class MeanshiftClustering:
             splits = np.split(sorted_positions, cluster_breaks)
             cluster_centers = np.array([np.mean(cluster) for cluster in splits])
         
-        # 计算每个聚类中心的功率并排序
+        # Calculate power for each cluster center and sort by power
         cluster_powers = np.array([
             np.max(powers[np.argmin(np.abs(freqs[:, np.newaxis] - center), axis=0)])
             for center in cluster_centers
