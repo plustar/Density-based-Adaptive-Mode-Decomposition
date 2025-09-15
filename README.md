@@ -84,7 +84,7 @@ signal = np.sin(2*np.pi*50*t) + 0.5*np.sin(2*np.pi*120*t) + 0.1*np.random.randn(
 
 # Configure bandwidth estimation
 bandwidth_config = BandwidthConfig(
-    method='adaptive',
+    method='percentile',
     scale_factor=1.0,
     base_method='silverman',
     seed_spacing = 5
@@ -166,10 +166,11 @@ DAMDConfig(
 
 ```python
 BandwidthConfig(
-    method='adaptive',       # 'silverman', 'scott', 'percentile', 'adaptive'
+    method='percentile',       # 'silverman', 'percentile', 'adaptive'
     scale_factor=1.0,       # Scaling factor for bandwidth
     base_method='silverman', # Base method for adaptive estimation
-    min_bandwidth=1e-6      # Minimum allowed bandwidth
+    min_bandwidth=1e-6,      # Minimum allowed bandwidth
+    seed_spacing = 5         # To speed up the convergence
 )
 ```
 
