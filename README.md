@@ -86,7 +86,8 @@ signal = np.sin(2*np.pi*50*t) + 0.5*np.sin(2*np.pi*120*t) + 0.1*np.random.randn(
 bandwidth_config = BandwidthConfig(
     method='adaptive',
     scale_factor=1.0,
-    base_method='silverman'
+    base_method='silverman',
+    seed_spacing = 5
 )
 
 # Configure DAMD
