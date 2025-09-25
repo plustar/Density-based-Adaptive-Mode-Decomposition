@@ -19,7 +19,6 @@ A comprehensive Python implementation of Density-based Adaptive Mode Decompositi
 
 - **Adaptive Bandwidth Estimation**:
   - Silverman's rule of thumb
-  - Scott's rule
   - Percentile-based estimation
   - Adaptive spectral curvature-based bandwidth
 
