@@ -9,7 +9,6 @@ A comprehensive Python implementation of Density-based Adaptive Mode Decompositi
 
 - **Multiple Decomposition Methods**:
   - **DME (Direct Mode Extraction)**: Fast frequency-domain decomposition using clustering
-  - **IMR (Interaction Mode Refinement)**: Variational decomposition for overlapping modes  
   - **HVR (Hybrid Variational Refinement)**: Combines DME initialization with selective VMD refinement
   - **VMD (Traditional)**: Classic Variational Mode Decomposition
 
@@ -173,12 +172,22 @@ BandwidthConfig(
 )
 ```
 
+## Citation
+ 
+```bibtex
+@article{jia2025damd,
+  title   = {Density-based Adaptive Mode Decomposition},
+  author  = {Jia, Hao and Yang, Chunyu and Caiafa, Cesar F. and Sun, Zhe and Duan, Feng and Sol\'{e}-Casals, Jordi},
+  journal = {IEEE Transactions on Signal Processing},
+  year    = {2025}
+}
+```
+
 ## 📊 Method Selection Guide
 
 | Method | Best For | Computational Cost | Accuracy |
 |--------|----------|-------------------|----------|
 | **DME** | Well-separated modes, fast processing | Low | Good |
-| **IMR** | Overlapping modes, high precision | High | Excellent |
 | **HVR** | Mixed scenarios, balanced performance | Medium | Very Good |
 
 ## 🎯 Key Features
