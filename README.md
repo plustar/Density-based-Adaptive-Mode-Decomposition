@@ -5,6 +5,8 @@
 
 A comprehensive Python implementation of Density-based Adaptive Mode Decomposition (DAMD), which addresses fundamental limitations in traditional Variational Mode Decomposition (VMD) through theoretical equivalence with density-based clustering and automatic parameter determination.
 
+The code of Multivariate Density-based Adaptive Mode Decomposition will also be uploaded here after the acceptance of the submission.
+
 ## 🌟 Features
 
 - **Multiple Decomposition Methods**:
