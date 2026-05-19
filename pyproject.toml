@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "damd"
+version = "2.0.0"
+description = "Density-based Adaptive Mode Decomposition — automatic mode extraction for non-stationary signals"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Hao Jia", email = "haojia@nankai.edu.cn" },
+]
+keywords = [
+    "signal-processing", "mode-decomposition",
+    "time-frequency-analysis", "clustering",
+    "VMD", "synchrosqueezing",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "numpy>=1.22",
+    "scipy>=1.9",
+]
+
+[project.optional-dependencies]
+viz = ["matplotlib>=3.5"]
+test = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "matplotlib>=3.5", "ruff>=0.1"]
+
+[project.urls]
+Homepage = "https://github.com/plustar/Density-based-Adaptive-Mode-Decomposition"
+Repository = "https://github.com/plustar/Density-based-Adaptive-Mode-Decomposition"
+"Bug Tracker" = "https://github.com/plustar/Density-based-Adaptive-Mode-Decomposition/issues"
+
+[tool.setuptools.packages.find]
+include = ["damd*"]
+exclude = ["experiments*", "damd.tests*"]
+
+[tool.setuptools.package-data]
+damd = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["damd/tests"]
+python_files = ["test_*.py"]
